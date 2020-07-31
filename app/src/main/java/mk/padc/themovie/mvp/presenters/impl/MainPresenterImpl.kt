@@ -1,6 +1,7 @@
 package mk.padc.themovie.mvp.presenters.impl
+import android.util.Log
 import androidx.lifecycle.LifecycleOwner
-import io.reactivex.android.schedulers.AndroidSchedulers
+import androidx.lifecycle.Observer
 import mk.padc.themovie.datas.models.impls.MovieModelmpl
 import mk.padc.themovie.datas.vos.PopularMovieVO
 import mk.padc.themovie.mvp.presenters.MainPresenter
@@ -11,31 +12,37 @@ class MainPresenterImpl : MainPresenter, BaseAppPresenterImpl<MainView>() {
     var mMovieImpl = MovieModelmpl
 
     override fun onUiReady(lifeCycleOwner: LifecycleOwner) {
-        loadAllMovieFromAPI()
-        requestAllDatas(lifeCycleOwner)
+        loadAllMoviesFromAPI()
+        onNotifyCallMovieList(lifeCycleOwner)
     }
 
-    private fun requestAllDatas(lifeCycleOwner: LifecycleOwner) {
-//        mMovieImpl.getAllPopularMovieList(onError = {
-//        }).observeOn(AndroidSchedulers.mainThread())
-//            .subscribe({
-//                mView?.displayPopularMovieList(it)
-//            })
+    private fun onNotifyCallMovieList(lifeCycleOwner: LifecycleOwner)
+    {
+        mMovieImpl.getAllPopularMovieList(onError = {})
+            .observe(lifeCycleOwner, Observer {
+            mView?.displayPopularMovieList(it)
+        })
+
+        mMovieImpl.getAllTopRatedMovieList (onError = {})
+            .observe(lifeCycleOwner, Observer {
+                mView?.displayTopRateMovieList(it)
+            })
     }
 
-
-    private fun loadAllMovieFromAPI() {
+    private fun loadAllMoviesFromAPI() {
         mMovieImpl.getAllPopularMovieFromApiAndSaveToDatabase(
             onSuccess = {},
             onError = {}
         )
-    }
-    override fun initPresenter(view: MainView) {
-
+        mMovieImpl.getAllTopRatedMovieListFromApiAndSaveToDatabase(
+            onSuccess = {},
+            onError = {}
+        )
     }
 
     override fun onTapListItem(entity: PopularMovieVO) {
 
+        mView?.navigateToMovieDetails(entity.id)
     }
 
 

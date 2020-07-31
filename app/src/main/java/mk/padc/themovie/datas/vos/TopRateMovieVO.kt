@@ -4,8 +4,9 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 
-@Entity(tableName = "popularmovies")
-data class PopularMovieVO(
+
+@Entity(tableName = "topratedmovies")
+data class TopRateMovieVO(
     @PrimaryKey
     @SerializedName("id") val id: Int,
     @SerializedName("backdrop_path") val backdrop_path: String,

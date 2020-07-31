@@ -13,8 +13,7 @@ abstract class BaseActivity : AppCompatActivity()
     }
 
     fun showSnackbar(message : String){
-        Snackbar
-            .make(window.decorView, message, Snackbar.LENGTH_LONG).show()
+        Snackbar.make(window.decorView, message, Snackbar.LENGTH_LONG).show()
     }
 
     fun showDialog(){

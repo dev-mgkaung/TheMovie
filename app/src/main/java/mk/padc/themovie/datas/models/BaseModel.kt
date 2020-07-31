@@ -2,7 +2,7 @@ package mk.padc.themovie.datas.models
 
 import android.content.Context
 import mk.padc.themovie.networks.MovieApi
-import mk.padc.themovie.persistence.MoviesDB
+import mk.padc.themovie.persistance.MoviesDB
 import mk.padc.themovie.utils.BASE_URL
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -12,8 +12,9 @@ import java.util.concurrent.TimeUnit
 
 abstract class BaseModel  {
 
-    lateinit var mApi: MovieApi
+    protected var mApi: MovieApi
     protected lateinit var mTheDB: MoviesDB
+
 
     init {
         val mOkHttpClient = OkHttpClient.Builder()
@@ -32,7 +33,8 @@ abstract class BaseModel  {
         mApi = retrofit.create(MovieApi::class.java)
     }
 
-    fun initDatabase(context: Context){
+
+    fun initDatabase(context: Context) {
         mTheDB = MoviesDB.getDBInstance(context)
     }
 
