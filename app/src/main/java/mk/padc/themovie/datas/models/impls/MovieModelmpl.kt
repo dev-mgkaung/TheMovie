@@ -60,24 +60,30 @@ object MovieModelmpl : MovieModel, BaseModel() {
             })
     }
 
-    override fun getMovieDetailById(onError: (String) -> Unit): LiveData<List<MovieDetailsVO>> {
+    override fun getMovieDetailById(smovieId: Int,onError: (String) -> Unit): LiveData<MovieDetailsVO> {
         return mTheDB.moviesDao()
-            .getAllMovieDetail()
+            .getAllMovieDetail(movie_id = smovieId)
     }
+
     @SuppressLint("CheckResult")
     override fun getMovieDetailFromApiAndSaveToDatabase(
+        movieId: Int,
         onSuccess: () -> Unit,
         onError: (String) -> Unit
     ) {
-        mApi.getMovieDetailById(PARAM_API_ACCESS_TOKEN,page_id)
+
+        mApi.getMovieDetailById(movieId,PARAM_API_ACCESS_TOKEN)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe ({
-              //  mTheDB.moviesDao().insertMovieDetailData(it)
+                Log.e("datase=$movieId","("+it.title);
+                mTheDB.moviesDao().insertMovieDetailData(it)
             },{
                 onError(it.localizedMessage ?: EM_NO_INTERNET_CONNECTION)
             })
     }
+
+
 
 
 }

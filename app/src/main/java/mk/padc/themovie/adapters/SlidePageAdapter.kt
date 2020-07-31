@@ -29,12 +29,14 @@ class SliderPagerAdapter(mContext: Context, mList: List<TopRateMovieVO>) :
         val slideText: TextView = slideLayout.findViewById(R.id.slide_title)
         val playimage: ImageView = slideLayout.findViewById(R.id.playimage)
 
-        playimage.setImageResource(R.drawable.play)
-        Glide.with(slideImg.context)
-            .load(("$BASE_IMAGE_URL${mList[position].poster_path}"))
-            .apply(RequestOptions.placeholderOf(R.drawable.place_holder_movie_maniac))
-            .into(slideImg)
-      slideText.setText(mList[position].title)
+        if(mList.size>0) {
+            playimage.setImageResource(R.drawable.play)
+            Glide.with(slideImg.context)
+                .load(("$BASE_IMAGE_URL${mList[position].poster_path}"))
+                .apply(RequestOptions.placeholderOf(R.drawable.place_holder_movie_maniac))
+                .into(slideImg)
+            slideText.setText(mList[position].title)
+        }
         container.addView(slideLayout)
         return slideLayout
     }

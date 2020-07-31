@@ -22,9 +22,11 @@ interface MovieApi {
         @Query("api_key") apiKey: String
     ): Observable<TopRateMovieResponse>
 
-    @GET("movie_id")
+    @GET("{movie_id}")
     fun getMovieDetailById(
-        @Query("api_key") apiKey: String,
-        @Path("movie_id") movie_id: Int): Observable<MovieDetailsVO>
+        @Path("movie_id") movie_id: Int,
+        @Query("api_key") apiKey: String
+
+    ): Observable<MovieDetailsVO>
 
 }

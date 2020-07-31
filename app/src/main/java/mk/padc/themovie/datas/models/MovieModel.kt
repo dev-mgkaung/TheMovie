@@ -15,8 +15,8 @@ interface MovieModel {
 
   fun getAllTopRatedMovieListFromApiAndSaveToDatabase(onSuccess: () -> Unit, onError: (String) -> Unit)
 
-  fun getMovieDetailById(onError: (String) -> Unit) : LiveData<List<MovieDetailsVO>>
+  fun getMovieDetailById(movieId: Int,onError: (String) -> Unit) : LiveData<MovieDetailsVO>
 
-  fun getMovieDetailFromApiAndSaveToDatabase(onSuccess: () -> Unit, onError: (String) -> Unit)
+  fun getMovieDetailFromApiAndSaveToDatabase(movieId: Int, onSuccess: () -> Unit, onError: (String) -> Unit)
 
 }

@@ -1,6 +1,7 @@
 package mk.padc.themovie.activities
 
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_home.*
@@ -31,7 +32,7 @@ class MainActivity : BaseActivity() , MainView
 
 
     override fun navigateToMovieDetails(mvoid_id: Int) {
-
+       Log.e("navigate id= $mvoid_id","ff")
         startActivity(MovieDetailActivity.newItent(this, mvoid_id))
     }
 
