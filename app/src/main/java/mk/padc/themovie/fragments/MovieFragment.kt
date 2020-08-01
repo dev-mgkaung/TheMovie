@@ -1,23 +1,19 @@
 package mk.padc.themovie.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.movie_list_recyclerview.*
 import kotlinx.android.synthetic.main.movie_list_recyclerview.view.*
 import mk.padc.themovie.R
 import mk.padc.themovie.adapters.DiscoverAdapter
-import mk.padc.themovie.adapters.PopularMovieAdapter
 import mk.padc.themovie.datas.vos.*
 import mk.padc.themovie.mvp.presenters.DiscoverPrsenter
-import mk.padc.themovie.mvp.presenters.MainPresenter
 import mk.padc.themovie.mvp.presenters.impl.DiscoverPresenterImpl
-import mk.padc.themovie.mvp.presenters.impl.MainPresenterImpl
-import mk.padc.themovie.mvp.views.MainView
 import mk.padc.themovie.mvp.views.MovieView
 
 private const val ARG_PARAM1 = "movie_id"
@@ -28,33 +24,38 @@ class MovieFragment : Fragment(), MovieView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            movie_id = it.getInt(ARG_PARAM1)
-        }
-        setUpPresenter()
-        setUpRecyclerView()
-        mPresenter.onUiReady(this,movie_id.toString())
+
     }
 
+    override fun onViewCreated(view: View,savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
 
-    private fun setUpPresenter() {
+    }
+
+        private fun setUpPresenter() {
         mPresenter = ViewModelProviders.of(this).get(DiscoverPresenterImpl::class.java)
         mPresenter.initPresenter(this)
     }
 
-    private fun setUpRecyclerView() {
+    private fun setUpRecyclerView(view: View) {
         mAdapter = DiscoverAdapter(mPresenter)
-        val alinearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
-        fragmentmovies_recyclerview?.layoutManager = alinearLayoutManager
-        fragmentmovies_recyclerview?.adapter = mAdapter
+        val linearLayoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        view.fragmentmovies_recyclerview.layoutManager = linearLayoutManager
+        view.fragmentmovies_recyclerview.adapter = mAdapter
     }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.movie_list_recyclerview, container, false)
-
+        var view= inflater.inflate(R.layout.movie_list_recyclerview, container, false)
+        arguments?.let {
+            movie_id = it.getInt(ARG_PARAM1)
+        }
+        setUpPresenter()
+        setUpRecyclerView(view)
+        mPresenter.onUiReady(this,movie_id.toString())
+        return view;
     }
 
     companion object {
@@ -70,6 +71,7 @@ class MovieFragment : Fragment(), MovieView {
     }
 
     override fun displayMovieList(list: List<DiscoverVO>) {
+        Log.e("data arrived ${list.get(0).original_title}","ff");
         mAdapter.setNewData(list.toMutableList())
     }
 

@@ -39,7 +39,6 @@ class MainActivity : BaseActivity() , MainView
     }
 
     override fun navigateToMovieDetails(mvoid_id: Int) {
-        Log.e("navigate id= $mvoid_id","ff")
 
         startActivity(MovieDetailActivity.newItent(this, mvoid_id))
     }
@@ -83,8 +82,10 @@ class MainActivity : BaseActivity() , MainView
     }
 
     override fun displayGenericList(list: List<GenerVO>) {
+        Log.e("Generic data=${list.get(0).name}","fff")
         dynamicPagerAdapter= DynamicPagerAdapter(list,supportFragmentManager)
         pager.adapter= dynamicPagerAdapter
+        tabs.setupWithViewPager(pager)
     }
 
     override fun displayActorList(list: List<ActorVO>) {
