@@ -78,7 +78,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Show Case"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_light_blue"
                     android:textSize="17sp"
                     android:textStyle="bold"/>
                 <TextView
@@ -94,11 +94,7 @@
                 android:id="@+id/showcase_recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="1dp"
-                android:layout_marginLeft="1dp"
-                android:layout_marginTop="4dp"
-                android:layout_marginEnd="4dp"
-                android:layout_marginRight="4dp"
+                android:layout_margin="1dp"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
@@ -113,7 +109,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Best Actors"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text_light_blue"
                     android:textSize="17sp"
                     android:textStyle="bold"/>
                 <TextView

@@ -84,6 +84,43 @@
             android:textColor="@color/white"
             android:drawableLeft="@drawable/ic_baseline_star_24"/>
     </LinearLayout>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" Actors"
+        android:textColor="@color/text_light_blue"
+        android:textSize="17sp"
+        android:textStyle="bold"/>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/cast_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Creators"
+            android:textColor="@color/text_light_blue"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="More Creators"
+            android:textColor="@color/white"
+            android:textSize="17sp"
+            android:textStyle="bold"/>
+    </RelativeLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/crew_recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+     />
 </LinearLayout>
 
 </ScrollView>

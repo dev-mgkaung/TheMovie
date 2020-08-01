@@ -45,4 +45,16 @@ interface MoviesDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertDiscoverData(generic: List<DiscoverVO?>)
+
+    @Query("select * from crew")
+    fun getAllCrewList(): LiveData<List<CrewVO>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertCrewData(generic: List<CrewVO?>)
+
+    @Query("select * from casttb")
+    fun getAllCastList(): LiveData<List<CastVO>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertCastData(generic: List<CastVO?>)
 }

@@ -28,4 +28,9 @@ interface MovieModel {
   fun getAllDiscoverList(genericname: String,onError: (String) -> Unit) : LiveData<List<DiscoverVO>>
 
   fun getAllDiscoverListFromApiAndSaveToDatabase(genericname: String,onSuccess: () -> Unit, onError: (String) -> Unit)
+
+  fun getAllCrewAndCastFromApiAndSaveToDatabase(movieId: Int,onSuccess: () -> Unit, onError: (String) -> Unit)
+
+  fun getAllCrewList(onError: (String) -> Unit) : LiveData<List<CrewVO>>
+  fun getAllCastList(onError: (String) -> Unit) : LiveData<List<CastVO>>
 }

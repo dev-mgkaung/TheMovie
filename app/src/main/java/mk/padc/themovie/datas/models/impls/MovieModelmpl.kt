@@ -69,7 +69,6 @@ object MovieModelmpl : MovieModel, BaseModel() {
         onSuccess: () -> Unit,
         onError: (String) -> Unit
     ) {
-        Log.e("save method=","ff");
         mApi.getMovieDetailById(movieId,PARAM_API_ACCESS_TOKEN)
             .map { it?.let { it } }
             .subscribeOn(Schedulers.io())
@@ -142,5 +141,42 @@ object MovieModelmpl : MovieModel, BaseModel() {
             },{
                 onError(it.localizedMessage ?: EM_NO_INTERNET_CONNECTION)
             })
+    }
+
+    @SuppressLint("CheckResult")
+    override fun getAllCrewAndCastFromApiAndSaveToDatabase(
+        movieId: Int,
+        onSuccess: () -> Unit,
+        onError: (String) -> Unit
+    ) {
+        mApi.getMovieDetailByActorsAndCreator(movieId,PARAM_API_ACCESS_TOKEN)
+            .map { it.cast?.toList() ?: listOf() }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe ({
+                mTheDB.moviesDao().insertCastData(it)
+            },{
+                onError(it.localizedMessage ?: EM_NO_INTERNET_CONNECTION)
+            })
+
+          mApi.getMovieDetailByActorsAndCreator(movieId,PARAM_API_ACCESS_TOKEN)
+            .map { it.crew?.toList() ?: listOf() }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe ({
+                mTheDB.moviesDao().insertCrewData(it)
+            },{
+                onError(it.localizedMessage ?: EM_NO_INTERNET_CONNECTION)
+            })
+    }
+
+    override fun getAllCrewList(onError: (String) -> Unit): LiveData<List<CrewVO>> {
+        return mTheDB.moviesDao()
+            .getAllCrewList()
+    }
+
+    override fun getAllCastList(onError: (String) -> Unit): LiveData<List<CastVO>> {
+        return mTheDB.moviesDao()
+            .getAllCastList()
     }
 }

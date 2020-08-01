@@ -2,11 +2,20 @@ package mk.padc.themovie.activities
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_movie_detail.*
 import mk.padc.themovie.R
+import mk.padc.themovie.adapters.ActorAdapter
+import mk.padc.themovie.adapters.CastAdapter
+import mk.padc.themovie.adapters.CrewAdapter
+import mk.padc.themovie.adapters.PopularMovieAdapter
+import mk.padc.themovie.datas.vos.CastVO
+import mk.padc.themovie.datas.vos.CrewVO
 import mk.padc.themovie.datas.vos.MovieDetailsVO
 import mk.padc.themovie.mvp.presenters.DetailPresenter
 import mk.padc.themovie.mvp.presenters.impl.DetailPresenterImpl
@@ -27,16 +36,31 @@ class MovieDetailActivity : BaseActivity() , DetailView{
     }
 
     private lateinit var mPresenter: DetailPresenter
-
+    //adapters
+    private lateinit var castAdapter: CastAdapter
+    private lateinit var crewAdapter: CrewAdapter
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_detail)
         val movie_id = intent.getIntExtra(movieid, 0)
         setUpPresenter()
+        setUpRecyclerView()
         mPresenter.onUiReady(this,movie_id)
 
     }
-    private fun setUpPresenter() {
+    private fun setUpRecyclerView() {
+        castAdapter = CastAdapter(mPresenter)
+        val alinearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        cast_recyclerview.layoutManager = alinearLayoutManager
+        cast_recyclerview.adapter = castAdapter
+
+        crewAdapter = CrewAdapter(mPresenter)
+        val blinearLayoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        crew_recyclerview.layoutManager = blinearLayoutManager
+        crew_recyclerview.adapter = crewAdapter
+    }
+
+        private fun setUpPresenter() {
         mPresenter = ViewModelProviders.of(this).get(DetailPresenterImpl::class.java)
         mPresenter.initPresenter(this)
     }
@@ -50,5 +74,13 @@ class MovieDetailActivity : BaseActivity() , DetailView{
             .into(movie_poster_image)
             movietitle.text=moviedetail.original_title
             overview.text= moviedetail.overview
+    }
+
+    override fun displayCrewList(list: List<CrewVO>) {
+        crewAdapter.setNewData(list.toMutableList())
+    }
+
+    override fun displayCastList(list: List<CastVO>) {
+        castAdapter.setNewData(list.toMutableList())
     }
 }

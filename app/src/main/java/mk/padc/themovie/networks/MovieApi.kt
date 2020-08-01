@@ -44,4 +44,10 @@ interface MovieApi {
         @Query("api_key") apiKey: String,
         @Query("with_genres") withGeneric: String
     ): Observable<GetDiscoverResponse>
+
+    @GET("movie/{movie_id}/credits")
+    fun getMovieDetailByActorsAndCreator(
+        @Path("movie_id") movie_id: Int,
+        @Query("api_key") apiKey: String
+    ): Observable<GetActorAndCreatorResponse>
 }

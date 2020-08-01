@@ -8,6 +8,7 @@ const val GET_GENERIC_List="genre/movie/list"
 const val GET_Discover="discover/movie"
 
 
+
 //Params
 const val PARAM_API_ACCESS_TOKEN = "8b7e5e001dc29b494e6f8548357f9f80"
 const val LANGUAGE = "en-US"
