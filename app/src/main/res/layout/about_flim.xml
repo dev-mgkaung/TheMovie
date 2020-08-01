@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    android:background="@color/colorPrimary"
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=" About Flim"
+        android:textColor="@color/text_light_blue"
+        android:textSize="17sp"
+        android:textStyle="bold"/>
+    <LinearLayout
+        android:layout_margin="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Original Title"
+            android:layout_weight="3"
+            android:textColor="@color/text_light_blue"
+            android:textSize="14sp"/>
+        <TextView
+            android:layout_weight="7"
+            android:layout_width="0dp"
+            android:id="@+id/original_flim"
+            android:layout_height="wrap_content"
+            android:text=" Movie Title"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_margin="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Movie Type"
+            android:layout_weight="3"
+            android:textColor="@color/text_light_blue"
+            android:textSize="14sp"/>
+        <TextView
+            android:layout_weight="7"
+            android:layout_width="0dp"
+            android:id="@+id/movietype"
+            android:layout_height="wrap_content"
+            android:text="Adventure,Drama"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_margin="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Production"
+            android:layout_weight="3"
+            android:textColor="@color/text_light_blue"
+            android:textSize="14sp"/>
+        <TextView
+            android:layout_weight="7"
+            android:layout_width="0dp"
+            android:id="@+id/production"
+            android:layout_height="wrap_content"
+            android:text=" Movie Title"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_margin="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="10">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Description"
+            android:layout_weight="3"
+            android:textColor="@color/text_light_blue"
+            android:textSize="14sp"/>
+        <TextView
+            android:layout_weight="7"
+            android:layout_width="0dp"
+            android:id="@+id/description"
+            android:layout_height="wrap_content"
+            android:text=" Movie Title"
+            android:maxLines="4"
+            android:ellipsize="end"
+            android:textColor="@color/white"
+            android:textSize="15sp"/>
+    </LinearLayout>
+</LinearLayout>

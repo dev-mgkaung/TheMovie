@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import kotlinx.android.synthetic.main.about_flim.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_movie_detail.*
 import mk.padc.themovie.R
@@ -67,6 +68,9 @@ class MovieDetailActivity : BaseActivity() , DetailView{
 
 
     override fun displayMovieDetail(moviedetail: MovieDetailsVO) {
+        original_flim.text=moviedetail.original_title
+        description.text =moviedetail.overview
+        production.text= moviedetail.tagline
 
         Glide.with(movie_poster_image)
             .load(("$BASE_IMAGE_URL${moviedetail.poster_path}"))
