@@ -1,17 +1,13 @@
 package mk.padc.themovie.activities
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.activity_movie_detail.*
-import kotlinx.android.synthetic.main.popular_item_movie.view.*
 import mk.padc.themovie.R
 import mk.padc.themovie.datas.vos.MovieDetailsVO
-import mk.padc.themovie.datas.vos.PopularMovieVO
 import mk.padc.themovie.mvp.presenters.DetailPresenter
 import mk.padc.themovie.mvp.presenters.impl.DetailPresenterImpl
 import mk.padc.themovie.mvp.views.DetailView
@@ -23,7 +19,7 @@ class MovieDetailActivity : BaseActivity() , DetailView{
 
         const val movieid = "Movie Id Extra"
 
-        fun newItent(context: Context, mId : Int): Intent {
+        fun newItent(context: MainActivity, mId: Int): Intent {
             val intent =  Intent(context, MovieDetailActivity::class.java)
             intent.putExtra(movieid, mId)
             return intent

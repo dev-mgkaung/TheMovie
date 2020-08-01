@@ -42,8 +42,7 @@ class DiscoverPresenterImpl : DiscoverPrsenter, BaseAppPresenterImpl<MovieView>(
     }
 
     override fun onTapDiscoverListItem(entity: DiscoverVO) {
-
-    }
+        mView?.navigateToDetail(entity.id)    }
 
     override fun onTapShowCaseItem(entity: TopRateMovieVO) {
 

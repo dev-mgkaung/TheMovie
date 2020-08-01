@@ -5,4 +5,5 @@ import mk.padc.themovie.datas.vos.DiscoverVO
 interface MovieView : BaseView {
 
     fun displayMovieList(list: List<DiscoverVO>)
+    fun navigateToDetail(id: Int)
 }

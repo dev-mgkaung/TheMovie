@@ -2,11 +2,8 @@ package mk.padc.themovie.activities
 
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.tab_layout_viewpager.*
 import mk.padc.themovie.R
@@ -15,7 +12,6 @@ import mk.padc.themovie.datas.vos.ActorVO
 import mk.padc.themovie.datas.vos.GenerVO
 import mk.padc.themovie.datas.vos.PopularMovieVO
 import mk.padc.themovie.datas.vos.TopRateMovieVO
-import mk.padc.themovie.fragments.MovieFragment
 import mk.padc.themovie.mvp.presenters.MainPresenter
 import mk.padc.themovie.mvp.presenters.impl.MainPresenterImpl
 import mk.padc.themovie.mvp.views.MainView

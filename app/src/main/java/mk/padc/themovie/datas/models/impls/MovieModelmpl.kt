@@ -71,9 +71,7 @@ object MovieModelmpl : MovieModel, BaseModel() {
     ) {
         Log.e("save method=","ff");
         mApi.getMovieDetailById(movieId,PARAM_API_ACCESS_TOKEN)
-            .map { it?.let {
-                it
-            } }
+            .map { it?.let { it } }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe ({

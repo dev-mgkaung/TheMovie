@@ -1,7 +1,6 @@
 package mk.padc.themovie.fragments
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +9,8 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.movie_list_recyclerview.view.*
 import mk.padc.themovie.R
+import mk.padc.themovie.activities.MainActivity
+import mk.padc.themovie.activities.MovieDetailActivity
 import mk.padc.themovie.adapters.DiscoverAdapter
 import mk.padc.themovie.datas.vos.*
 import mk.padc.themovie.mvp.presenters.DiscoverPrsenter
@@ -49,6 +50,7 @@ class MovieFragment : Fragment(), MovieView {
         savedInstanceState: Bundle?
     ): View? {
         var view= inflater.inflate(R.layout.movie_list_recyclerview, container, false)
+
         arguments?.let {
             movie_id = it.getInt(ARG_PARAM1)
         }
@@ -60,7 +62,6 @@ class MovieFragment : Fragment(), MovieView {
 
     companion object {
 
-        // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(movie_id: Int) =
             MovieFragment().apply {
@@ -71,10 +72,12 @@ class MovieFragment : Fragment(), MovieView {
     }
 
     override fun displayMovieList(list: List<DiscoverVO>) {
-        Log.e("data arrived ${list.get(0).original_title}","ff");
         mAdapter.setNewData(list.toMutableList())
     }
 
+    override fun navigateToDetail(id: Int) {
+        startActivity(MovieDetailActivity.newItent(activity as MainActivity, id))
+    }
 
 
 }

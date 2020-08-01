@@ -32,7 +32,7 @@ class DetailPresenterImpl : DetailPresenter, BaseAppPresenterImpl<DetailView>() 
 
 
     override fun onTap() {
-        TODO("Not yet implemented")
+
     }
 
 
