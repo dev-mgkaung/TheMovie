@@ -18,7 +18,7 @@
             android:id="@+id/movie_poster_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scaleType="centerCrop"
+            android:scaleType="center"
             android:src="@drawable/place_holder_movie_maniac" />
 
         <include
@@ -28,7 +28,7 @@
         <include layout="@layout/detail_review_layout"
             android:layout_width="match_parent"
             android:layout_alignParentBottom="true"
-            android:layout_height="120dp"/>
+            android:layout_height="90dp"/>
 
     </RelativeLayout>
     <TextView
@@ -40,7 +40,7 @@
         android:text="The Movie Title"
         android:layout_margin="5dp"
         android:id="@+id/movietitle"/>
-
+    <include layout="@layout/movie_type_layout"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

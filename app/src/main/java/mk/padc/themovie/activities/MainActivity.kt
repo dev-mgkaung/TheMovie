@@ -78,7 +78,7 @@ class MainActivity : BaseActivity() , MainView
     }
 
     override fun displayGenericList(list: List<GenerVO>) {
-        Log.e("Generic data=${list.get(0).name}","fff")
+
         dynamicPagerAdapter= DynamicPagerAdapter(list,supportFragmentManager)
         pager.adapter= dynamicPagerAdapter
         tabs.setupWithViewPager(pager)
