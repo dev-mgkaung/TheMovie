@@ -1,8 +1,11 @@
 package mk.padc.themovie.utils
 
-const val BASE_URL = "https://api.themoviedb.org/3/movie/"
-const val GET_POPULAR = "popular"
-const val GET_TOPRATED="top_rated"
+const val BASE_URL = "https://api.themoviedb.org/3/"
+const val GET_POPULAR = "movie/popular"
+const val GET_TOPRATED="movie/top_rated"
+const val GET_ACTOR="person/popular"
+const val GET_GENERIC_List="genre/movie/list"
+const val GET_Discover="discover/movie"
 
 
 //Params

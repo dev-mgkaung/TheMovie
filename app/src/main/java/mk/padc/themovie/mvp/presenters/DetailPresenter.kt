@@ -6,5 +6,4 @@ import mk.padc.themovie.mvp.views.DetailView
 
 interface DetailPresenter : BasePresenter<DetailView>, MovieDetailDelegate {
    fun onUiReady(lifeCycleOwner: LifecycleOwner,movieid: Int)
- //   fun fetchMovieDetail(movieid: Int)
 }

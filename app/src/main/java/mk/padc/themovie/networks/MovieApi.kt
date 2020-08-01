@@ -1,12 +1,10 @@
 package mk.padc.themovie.networks
 
-import mk.padc.themovie.networks.responses.MovieListResponse
-import mk.padc.themovie.utils.GET_POPULAR
 import retrofit2.http.*
 import io.reactivex.Observable
 import mk.padc.themovie.datas.vos.MovieDetailsVO
-import mk.padc.themovie.networks.responses.TopRateMovieResponse
-import mk.padc.themovie.utils.GET_TOPRATED
+import mk.padc.themovie.networks.responses.*
+import mk.padc.themovie.utils.*
 
 interface MovieApi {
 
@@ -22,11 +20,28 @@ interface MovieApi {
         @Query("api_key") apiKey: String
     ): Observable<TopRateMovieResponse>
 
-    @GET("{movie_id}")
+    @GET("movie/{movie_id}")
     fun getMovieDetailById(
         @Path("movie_id") movie_id: Int,
         @Query("api_key") apiKey: String
-
     ): Observable<MovieDetailsVO>
 
+    @GET(GET_ACTOR)
+    fun getActorList(
+        @Query("api_key") apiKey: String,
+        @Query("language") language: String,
+        @Query("page") page: Int
+    ): Observable<GetActorResponse>
+
+    @GET(GET_GENERIC_List)
+    fun getGenericList(
+        @Query("api_key") apiKey: String,
+        @Query("language") language: String
+    ): Observable<GetGenericResponse>
+
+    @GET(GET_Discover)
+    fun getDiscoverList(
+        @Query("api_key") apiKey: String,
+        @Query("with_genres") withGeneric: String
+    ): Observable<GetDiscoverResponse>
 }

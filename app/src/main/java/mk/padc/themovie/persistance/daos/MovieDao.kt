@@ -5,9 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
-import mk.padc.themovie.datas.vos.MovieDetailsVO
-import mk.padc.themovie.datas.vos.PopularMovieVO
-import mk.padc.themovie.datas.vos.TopRateMovieVO
+import mk.padc.themovie.datas.vos.*
 
 @Dao
 interface MoviesDao {
@@ -28,5 +26,23 @@ interface MoviesDao {
     fun getAllMovieDetail(movie_id : Int): LiveData<MovieDetailsVO>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertMovieDetailData(moviedetail: MovieDetailsVO)
+    fun insertMovieDetailData(moviedetail: MovieDetailsVO) : Long
+
+    @Query("select * from actors")
+    fun getAllActorList(): LiveData<List<ActorVO>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertActorData(toprates: List<ActorVO?>)
+
+    @Query("select * from gener")
+    fun getAllGenericList(): LiveData<List<GenerVO>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertGenerData(generic: List<GenerVO?>)
+
+    @Query("select * from discover")
+    fun getAllDiscoverList(): LiveData<List<DiscoverVO>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertDiscoverData(generic: List<DiscoverVO?>)
 }

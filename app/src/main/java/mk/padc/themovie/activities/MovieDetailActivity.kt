@@ -3,6 +3,7 @@ package mk.padc.themovie.activities
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
@@ -34,11 +35,8 @@ class MovieDetailActivity : BaseActivity() , DetailView{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_detail)
-
         val movie_id = intent.getIntExtra(movieid, 0)
         setUpPresenter()
-
-        setUpRecyclerView()
         mPresenter.onUiReady(this,movie_id)
 
     }
@@ -48,18 +46,13 @@ class MovieDetailActivity : BaseActivity() , DetailView{
     }
 
 
-    private fun setUpRecyclerView() {
-
-    }
-
-
     override fun displayMovieDetail(moviedetail: MovieDetailsVO) {
 
         Glide.with(movie_poster_image)
             .load(("$BASE_IMAGE_URL${moviedetail.poster_path}"))
             .apply(RequestOptions.placeholderOf(R.drawable.place_holder_movie_maniac))
             .into(movie_poster_image)
-        movietitle.text=moviedetail.original_title
-        overview.text= moviedetail.overview
+            movietitle.text=moviedetail.original_title
+            overview.text= moviedetail.overview
     }
 }

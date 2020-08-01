@@ -11,18 +11,22 @@ class DetailPresenterImpl : DetailPresenter, BaseAppPresenterImpl<DetailView>() 
     var mMovieImpl = MovieModelmpl
 
     override fun onUiReady(lifeCycleOwner: LifecycleOwner,movie_id: Int) {
+
         mMovieImpl.getMovieDetailFromApiAndSaveToDatabase(
             movieId = movie_id,
             onSuccess = {},
             onError = {}
         )
+
         mMovieImpl.getMovieDetailById(
             movie_id,
             onError = {})
             .observe(lifeCycleOwner, Observer {
-                mView?.displayMovieDetail(it)
-            })
+                it?.let {
+                    mView?.displayMovieDetail(it)
+                }
 
+            })
     }
 
 

@@ -1,9 +1,7 @@
 package mk.padc.themovie.datas.models
 
 import androidx.lifecycle.LiveData
-import mk.padc.themovie.datas.vos.MovieDetailsVO
-import mk.padc.themovie.datas.vos.PopularMovieVO
-import mk.padc.themovie.datas.vos.TopRateMovieVO
+import mk.padc.themovie.datas.vos.*
 
 interface MovieModel {
 
@@ -19,4 +17,15 @@ interface MovieModel {
 
   fun getMovieDetailFromApiAndSaveToDatabase(movieId: Int, onSuccess: () -> Unit, onError: (String) -> Unit)
 
+  fun getAllActorList(onError: (String) -> Unit) : LiveData<List<ActorVO>>
+
+  fun getAllActorListFromApiAndSaveToDatabase(onSuccess: () -> Unit, onError: (String) -> Unit)
+
+  fun getAllGenericList(onError: (String) -> Unit) : LiveData<List<GenerVO>>
+
+  fun getAllGenericListFromApiAndSaveToDatabase(onSuccess: () -> Unit, onError: (String) -> Unit)
+
+  fun getAllDiscoverList(genericname: String,onError: (String) -> Unit) : LiveData<List<DiscoverVO>>
+
+  fun getAllDiscoverListFromApiAndSaveToDatabase(genericname: String,onSuccess: () -> Unit, onError: (String) -> Unit)
 }
