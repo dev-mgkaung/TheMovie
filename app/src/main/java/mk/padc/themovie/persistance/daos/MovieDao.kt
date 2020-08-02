@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import io.reactivex.Completable
 import mk.padc.themovie.datas.vos.*
 
 @Dao
@@ -52,15 +53,10 @@ interface MoviesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertDiscoverData(generic: List<DiscoverVO?>)
 
-    @Query("select * from crew")
-    fun getAllCrewList(): LiveData<List<CrewVO>>
+    @Query("select * from castcrew where  sid=:movie_id")
+    fun getAllCastAndCrewList(movie_id: Int): LiveData<CastCrewVO>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertCrewData(generic: List<CrewVO?>)
+    fun insertCastCrewData(generic: CastCrewVO) :Int
 
-    @Query("select * from casttb")
-    fun getAllCastList(): LiveData<List<CastVO>>
-
-    @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertCastData(generic: List<CastVO?>)
 }

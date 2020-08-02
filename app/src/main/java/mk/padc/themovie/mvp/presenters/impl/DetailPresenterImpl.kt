@@ -1,5 +1,6 @@
 package mk.padc.themovie.mvp.presenters.impl
 
+import android.util.Log
 import androidx.lifecycle.LifecycleOwner
 import mk.padc.themovie.datas.models.impls.MovieModelmpl
 import mk.padc.themovie.mvp.presenters.DetailPresenter
@@ -14,17 +15,20 @@ class DetailPresenterImpl : DetailPresenter, BaseAppPresenterImpl<DetailView>() 
     override fun onUiReady(lifeCycleOwner: LifecycleOwner,movie_id: Int) {
 
         mMovieImpl.getAllCrewAndCastFromApiAndSaveToDatabase(
-            movieId = movie_id,
+            movie_id,
             onSuccess = {
-
             },
-            onError = {}
+            onError = {
+                Log.e("eror dat",it)
+            }
         )
 
         mMovieImpl.getMovieDetailFromApiAndSaveToDatabase(
-            movieId = movie_id,
+           movie_id,
             onSuccess = {},
-            onError = {}
+            onError = {
+
+            }
         )
 
 
@@ -38,15 +42,18 @@ class DetailPresenterImpl : DetailPresenter, BaseAppPresenterImpl<DetailView>() 
 
             })
 
-        mMovieImpl.getAllCastList (onError = {})
+        mMovieImpl.getAllCastAndCrewList (
+            movie_id,
+            onError = {
+                Log.e("display eror dat",it)
+            })
             .observe(lifeCycleOwner, Observer {
-                mView?.displayCastList(it)
+                it?.let {
+                    mView?.displayCastCrewList(it)
+                }
+
             })
 
-        mMovieImpl.getAllCrewList  (onError = {})
-            .observe(lifeCycleOwner, Observer {
-                mView?.displayCrewList(it)
-            })
     }
 
 

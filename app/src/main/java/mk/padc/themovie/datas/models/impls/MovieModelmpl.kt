@@ -1,7 +1,6 @@
 package mk.padc.themovie.datas.models.impls
 
 import android.annotation.SuppressLint
-import android.util.Log
 import androidx.lifecycle.LiveData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -147,35 +146,23 @@ object MovieModelmpl : MovieModel, BaseModel() {
         onError: (String) -> Unit
     ) {
         mApi.getMovieDetailByActorsAndCreator(movieId,PARAM_API_ACCESS_TOKEN)
-            .map { it.cast?.toList() ?: listOf() }
+            .map{it}
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe ({
-                //mTheDB.moviesDao().insertCastData(it)
-            },{
-                onError(it.localizedMessage ?: EM_NO_INTERNET_CONNECTION)
-            })
-
-          mApi.getMovieDetailByActorsAndCreator(movieId,PARAM_API_ACCESS_TOKEN)
-            .map { it.crew?.toList() ?: listOf() }
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe ({
-             //   mTheDB.moviesDao().insertCrewData(it)
+                mTheDB.moviesDao().insertCastCrewData(it)
             },{
                 onError(it.localizedMessage ?: EM_NO_INTERNET_CONNECTION)
             })
     }
 
-    override fun getAllCrewList(onError: (String) -> Unit): LiveData<List<CrewVO>> {
+
+
+    override fun getAllCastAndCrewList(id: Int,onError: (String) -> Unit): LiveData<CastCrewVO> {
         return mTheDB.moviesDao()
-            .getAllCrewList()
+            .getAllCastAndCrewList(movie_id = id)
     }
 
-    override fun getAllCastList(onError: (String) -> Unit): LiveData<List<CastVO>> {
-        return mTheDB.moviesDao()
-            .getAllCastList()
-    }
 
     @SuppressLint("CheckResult")
     override fun getVideoIdByMovieId(

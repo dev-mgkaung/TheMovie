@@ -2,6 +2,7 @@ package mk.padc.themovie.networks
 
 import retrofit2.http.*
 import io.reactivex.Observable
+import mk.padc.themovie.datas.vos.CastCrewVO
 import mk.padc.themovie.datas.vos.MovieDetailsVO
 import mk.padc.themovie.networks.responses.*
 import mk.padc.themovie.utils.*
@@ -49,7 +50,7 @@ interface MovieApi {
     fun getMovieDetailByActorsAndCreator(
         @Path("movie_id") movie_id: Int,
         @Query("api_key") apiKey: String
-    ): Observable<GetActorAndCreatorResponse>
+    ): Observable<CastCrewVO>
 
     @GET("movie/{movie_id}/videos")
     fun getVideoIdByMovieId(

@@ -97,17 +97,15 @@ object MockMovieModelImpl : MovieModel {
 
     }
 
-    override fun getAllCrewList(onError: (String) -> Unit): LiveData<List<CrewVO>> {
-        val liveData = MutableLiveData<List<CrewVO>>()
-         liveData.postValue(getDummyCrewList())
+    override fun getAllCastAndCrewList(
+        movieId: Int,
+        onError: (String) -> Unit
+    ): LiveData<CastCrewVO> {
+        val liveData = MutableLiveData<CastCrewVO>()
         return liveData
     }
 
-    override fun getAllCastList(onError: (String) -> Unit): LiveData<List<CastVO>> {
-        val liveData = MutableLiveData<List<CastVO>>()
-         liveData.postValue(getDummyCastList())
-        return liveData
-    }
+
 
     override fun getVideoIdByMovieId(
         movieId: Int,

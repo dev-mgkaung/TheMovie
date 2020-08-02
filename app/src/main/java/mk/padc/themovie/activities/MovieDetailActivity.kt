@@ -16,6 +16,7 @@ import mk.padc.themovie.adapters.ActorAdapter
 import mk.padc.themovie.adapters.CastAdapter
 import mk.padc.themovie.adapters.CrewAdapter
 import mk.padc.themovie.adapters.PopularMovieAdapter
+import mk.padc.themovie.datas.vos.CastCrewVO
 import mk.padc.themovie.datas.vos.CastVO
 import mk.padc.themovie.datas.vos.CrewVO
 import mk.padc.themovie.datas.vos.MovieDetailsVO
@@ -92,11 +93,12 @@ class MovieDetailActivity : BaseActivity() , DetailView{
             overview.text= moviedetail.overview
     }
 
-    override fun displayCrewList(list: List<CrewVO>) {
-        crewAdapter.setNewData(list.toMutableList())
+    override fun displayCastCrewList(list: CastCrewVO) {
+        crewAdapter.setNewData(list.crew)
+        castAdapter.setNewData(list.cast)
     }
 
-    override fun displayCastList(list: List<CastVO>) {
-        castAdapter.setNewData(list.toMutableList())
-    }
+
+
+
 }
