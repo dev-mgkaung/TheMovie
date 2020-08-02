@@ -77,6 +77,8 @@ dependencies {
     // Annotation processor
     kapt "androidx.lifecycle:lifecycle-compiler:$lifecycle_version"
 
+    implementation 'com.pierfrancescosoffritti.androidyoutubeplayer:core:10.0.5'
+
     // Room
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"

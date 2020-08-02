@@ -39,6 +39,10 @@ class MainActivity : BaseActivity() , MainView
         startActivity(MovieDetailActivity.newItent(this, mvoid_id))
     }
 
+    override fun navigateToVideo(movie_id: Int) {
+        startActivity(FullScreenVideoActivity.newItent(this, movie_id))
+    }
+
     private fun setUpPresenter() {
         mPresenter = ViewModelProviders.of(this).get(MainPresenterImpl::class.java)
         mPresenter.initPresenter(this)

@@ -5,5 +5,4 @@
         android:state_selected="true" />
     <item android:drawable="@drawable/default_indicator" />
 
-
 </selector>

@@ -33,4 +33,7 @@ interface MovieModel {
 
   fun getAllCrewList(onError: (String) -> Unit) : LiveData<List<CrewVO>>
   fun getAllCastList(onError: (String) -> Unit) : LiveData<List<CastVO>>
+
+  fun getVideoIdByMovieId(movieId: Int,onSuccess: (List<VideoVO>) -> Unit,onError: (String) -> Unit)
+
 }

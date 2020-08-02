@@ -13,4 +13,5 @@ interface MainView : BaseView{
     fun displayGenericList(list: List<GenerVO>)
     fun displayActorList(list: List<ActorVO>)
     fun navigateToMovieDetails(movie_id : Int)
+    fun navigateToVideo(movie_id : Int)
 }

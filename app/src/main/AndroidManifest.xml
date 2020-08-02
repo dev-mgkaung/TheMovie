@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.MovieDetailActivity"/>
+        <activity android:name=".activities.FullScreenVideoActivity" android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

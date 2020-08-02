@@ -50,4 +50,11 @@ interface MovieApi {
         @Path("movie_id") movie_id: Int,
         @Query("api_key") apiKey: String
     ): Observable<GetActorAndCreatorResponse>
+
+    @GET("movie/{movie_id}/videos")
+    fun getVideoIdByMovieId(
+        @Path("movie_id") movie_id: Int,
+        @Query("api_key") apiKey: String
+    ): Observable<GetVideoResponse>
+
 }

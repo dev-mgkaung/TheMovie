@@ -117,4 +117,12 @@ object MockMovieModelImpl : MovieModel {
         return liveData
     }
 
+    override fun getVideoIdByMovieId(
+        movieId: Int,
+        onSuccess: (List<VideoVO>) -> Unit,
+        onError: (String) -> Unit
+    ) {
+
+    }
+
 }

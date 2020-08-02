@@ -77,7 +77,7 @@ class MainPresenterImpl : MainPresenter, BaseAppPresenterImpl<MainView>() {
     }
 
     override fun onTapShowCaseItem(entity: TopRateMovieVO) {
-        mView?.navigateToMovieDetails(entity.id)
+        mView?.navigateToVideo(entity.id)
     }
 
 

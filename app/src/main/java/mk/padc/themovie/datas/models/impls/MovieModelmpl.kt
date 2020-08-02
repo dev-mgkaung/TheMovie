@@ -179,4 +179,23 @@ object MovieModelmpl : MovieModel, BaseModel() {
         return mTheDB.moviesDao()
             .getAllCastList()
     }
+
+    @SuppressLint("CheckResult")
+    override fun getVideoIdByMovieId(
+        movieId: Int,
+        onSuccess: (List<VideoVO>) -> Unit,
+        onError: (String) -> Unit
+    ){
+        mApi.getVideoIdByMovieId(movieId,PARAM_API_ACCESS_TOKEN)
+            .map { it.results?.toList() ?: listOf() }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe ({
+             it.let {
+                 onSuccess(it as List<VideoVO>)
+             }
+            },{
+                onError(it.localizedMessage ?: EM_NO_INTERNET_CONNECTION)
+            })
+    }
 }
