@@ -3,6 +3,8 @@ package mk.padc.themovie.activities
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import android.view.Window
+import android.view.WindowManager
 import androidx.annotation.NonNull
 import androidx.lifecycle.ViewModelProviders
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
@@ -30,6 +32,8 @@ class FullScreenVideoActivity : BaseActivity() , VideosView {
     private lateinit var mPresenter: VideoPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE)
+
         super.onCreate(savedInstanceState)
         setContentView(R.layout.video_player_view)
         val movie_id = intent.getIntExtra(MovieDetailActivity.movieid, 0)
@@ -40,9 +44,8 @@ class FullScreenVideoActivity : BaseActivity() , VideosView {
 
     private fun setUpVideoView(videoId: String)
     {
-        Log.e("videoId=",videoId);
         lifecycle.addObserver(youtube_player_view)
-
+        youtube_player_view.enterFullScreen()
         youtube_player_view.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
             override fun onReady(@NonNull youTubePlayer: YouTubePlayer) {
                 youTubePlayer.loadVideo(videoId, 0f)
