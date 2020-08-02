@@ -16,6 +16,12 @@ interface MoviesDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAllPopularMovieData(popularmovies: List<PopularMovieVO?>)
 
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun insertPopularMovieData(popularmovies: PopularMovieVO)
+
+    @Query("SELECT * FROM popularmovies WHERE id = :id")
+    fun findPopularMovieById(id : Int) : LiveData<PopularMovieVO>
+
     @Query("select * from topratedmovies")
     fun getAllTopRatedMovies(): LiveData<List<TopRateMovieVO>>
 
