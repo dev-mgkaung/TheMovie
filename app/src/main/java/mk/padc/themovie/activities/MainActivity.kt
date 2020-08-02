@@ -73,7 +73,7 @@ class MainActivity : BaseActivity() , MainView
     }
 
     override fun displayTopRateMovieList(list: List<TopRateMovieVO>) {
-        slider_pager.adapter=SliderPagerAdapter(applicationContext,list)
+        slider_pager.adapter=SliderPagerAdapter(this,list)
         indicator.setupWithViewPager(slider_pager,true);
     }
 

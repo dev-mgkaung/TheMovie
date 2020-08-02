@@ -16,21 +16,15 @@ class DiscoverPresenterImpl : DiscoverPrsenter, BaseAppPresenterImpl<MovieView>(
 
     override fun onUiReady(lifeCycleOwner: LifecycleOwner, mname: String) {
 
-        mMovieImpl.getAllDiscoverListFromApiAndSaveToDatabase(
-            genericId = mname,
-            onSuccess = {},
+        mMovieImpl.getAllDiscoverListFromApi(
+            genericname = mname,
+            onSuccess = {
+                mView?.displayMovieList(it)
+            },
             onError = {}
         )
 
-        mMovieImpl.getAllDiscoverList(
-            mname,
-            onError = {})
-            .observe(lifeCycleOwner, Observer {
-                it?.let {
-                    mView?.displayMovieList(it)
-                }
 
-            })
     }
 
     override fun onTapListItem(entity: PopularMovieVO) {

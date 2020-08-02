@@ -114,34 +114,31 @@ object MovieModelmpl : MovieModel, BaseModel() {
                 onError(it.localizedMessage ?: EM_NO_INTERNET_CONNECTION)
             })
     }
+    @SuppressLint("CheckResult")
+    override fun getAllDiscoverListFromApi(
+        genericname: String,
+        onSuccess: (List<DiscoverVO>) -> Unit,
+        onError: (String) -> Unit
+    ) {
+        mApi.getDiscoverList(PARAM_API_ACCESS_TOKEN,  genericname)
+            .map { it.results?.toList() ?: listOf() }
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe ({
+               onSuccess(it as List<DiscoverVO>)
+            },{
+                onError(it.localizedMessage ?: EM_NO_INTERNET_CONNECTION)
+            })
+    }
 
     override fun getAllGenericList(onError: (String) -> Unit): LiveData<List<GenerVO>> {
         return mTheDB.moviesDao()
             .getAllGenericList()
     }
 
-    override fun getAllDiscoverList(
-        genericId: String,onError: (String) -> Unit): LiveData<List<DiscoverVO>> {
-        return mTheDB.moviesDao()
-            .getAllDiscoverList()
-    }
 
-    @SuppressLint("CheckResult")
-    override fun getAllDiscoverListFromApiAndSaveToDatabase(
-        genericId: String,
-        onSuccess: () -> Unit,
-        onError: (String) -> Unit
-    ) {
-        mApi.getDiscoverList(PARAM_API_ACCESS_TOKEN,  genericId)
-            .map { it.results?.toList() ?: listOf() }
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe ({
-                mTheDB.moviesDao().insertDiscoverData(it)
-            },{
-                onError(it.localizedMessage ?: EM_NO_INTERNET_CONNECTION)
-            })
-    }
+
+
 
     @SuppressLint("CheckResult")
     override fun getAllCrewAndCastFromApiAndSaveToDatabase(
@@ -154,7 +151,7 @@ object MovieModelmpl : MovieModel, BaseModel() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe ({
-                mTheDB.moviesDao().insertCastData(it)
+                //mTheDB.moviesDao().insertCastData(it)
             },{
                 onError(it.localizedMessage ?: EM_NO_INTERNET_CONNECTION)
             })
@@ -164,7 +161,7 @@ object MovieModelmpl : MovieModel, BaseModel() {
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe ({
-                mTheDB.moviesDao().insertCrewData(it)
+             //   mTheDB.moviesDao().insertCrewData(it)
             },{
                 onError(it.localizedMessage ?: EM_NO_INTERNET_CONNECTION)
             })

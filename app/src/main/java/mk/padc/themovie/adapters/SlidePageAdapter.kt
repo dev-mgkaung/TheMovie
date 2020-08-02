@@ -1,5 +1,6 @@
 package mk.padc.themovie.adapters
 
+import android.app.Activity
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -7,16 +8,19 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.annotation.NonNull
+import androidx.core.content.ContextCompat.startActivity
 import androidx.viewpager.widget.PagerAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import mk.padc.themovie.R
+import mk.padc.themovie.activities.FullScreenVideoActivity
+import mk.padc.themovie.activities.MainActivity
 import mk.padc.themovie.datas.vos.PopularMovieVO
 import mk.padc.themovie.datas.vos.TopRateMovieVO
 import mk.padc.themovie.utils.BASE_IMAGE_URL
 
 
-class SliderPagerAdapter(mContext: Context, mList: List<TopRateMovieVO>) :
+class SliderPagerAdapter(mContext: Activity, mList: List<TopRateMovieVO>) :
     PagerAdapter() {
     private val mContext: Context
     private val mList: List<TopRateMovieVO>

@@ -15,7 +15,9 @@ class DetailPresenterImpl : DetailPresenter, BaseAppPresenterImpl<DetailView>() 
 
         mMovieImpl.getAllCrewAndCastFromApiAndSaveToDatabase(
             movieId = movie_id,
-            onSuccess = {},
+            onSuccess = {
+
+            },
             onError = {}
         )
 

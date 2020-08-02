@@ -80,22 +80,14 @@ object MockMovieModelImpl : MovieModel {
 
     }
 
-    override fun getAllDiscoverList(
+    override fun getAllDiscoverListFromApi(
         genericname: String,
-        onError: (String) -> Unit
-    ): LiveData<List<DiscoverVO>> {
-        val liveData = MutableLiveData<List<DiscoverVO>>()
-        liveData.postValue(getDummyDiscoverList())
-        return liveData
-    }
-
-    override fun getAllDiscoverListFromApiAndSaveToDatabase(
-        genericname: String,
-        onSuccess: () -> Unit,
+        onSuccess: (List<DiscoverVO>) -> Unit,
         onError: (String) -> Unit
     ) {
 
-    }
+      }
+
 
     override fun getAllCrewAndCastFromApiAndSaveToDatabase(
         movieId: Int,
