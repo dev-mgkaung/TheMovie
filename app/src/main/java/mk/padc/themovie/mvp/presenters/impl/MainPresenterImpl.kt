@@ -2,6 +2,7 @@ package mk.padc.themovie.mvp.presenters.impl
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import mk.padc.themovie.datas.models.MovieModel
 import mk.padc.themovie.datas.models.impls.MovieModelmpl
 import mk.padc.themovie.datas.vos.ActorVO
 import mk.padc.themovie.datas.vos.DiscoverVO
@@ -12,7 +13,7 @@ import mk.padc.themovie.mvp.views.MainView
 
 class MainPresenterImpl : MainPresenter, BaseAppPresenterImpl<MainView>() {
 
-    var mMovieImpl = MovieModelmpl
+    var mMovieImpl : MovieModel = MovieModelmpl
 
     override fun onUiReady(lifeCycleOwner: LifecycleOwner) {
         loadAllMoviesFromAPI()
@@ -64,7 +65,6 @@ class MainPresenterImpl : MainPresenter, BaseAppPresenterImpl<MainView>() {
     }
 
     override fun onTapListItem(entity: PopularMovieVO) {
-
         mView?.navigateToMovieDetails(entity.id)
     }
 

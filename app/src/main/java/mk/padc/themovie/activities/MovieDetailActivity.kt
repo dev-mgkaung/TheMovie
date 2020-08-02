@@ -10,6 +10,7 @@ import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.about_flim.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_movie_detail.*
+import kotlinx.android.synthetic.main.detail_action_bar.*
 import mk.padc.themovie.R
 import mk.padc.themovie.adapters.ActorAdapter
 import mk.padc.themovie.adapters.CastAdapter
@@ -46,8 +47,19 @@ class MovieDetailActivity : BaseActivity() , DetailView{
         val movie_id = intent.getIntExtra(movieid, 0)
         setUpPresenter()
         setUpRecyclerView()
+        setUpListener()
         mPresenter.onUiReady(this,movie_id)
 
+    }
+    private fun setUpListener()
+    {
+        back.setOnClickListener{
+            onBackPressed()
+        }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
     }
     private fun setUpRecyclerView() {
         castAdapter = CastAdapter(mPresenter)
