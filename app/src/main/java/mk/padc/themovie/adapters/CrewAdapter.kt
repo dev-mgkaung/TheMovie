@@ -2,6 +2,7 @@ package mk.padc.themovie.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import mk.padc.share.adapters.BaseRecyclerAdapter
 import mk.padc.themovie.R
 import mk.padc.themovie.datas.vos.CrewVO
 import mk.padc.themovie.delegates.MovieDetailDelegate

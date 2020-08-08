@@ -1,6 +1,7 @@
 package mk.padc.themovie.adapters
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import mk.padc.share.adapters.BaseRecyclerAdapter
 import mk.padc.themovie.R
 import mk.padc.themovie.datas.vos.PopularMovieVO
 import mk.padc.themovie.delegates.PopularMovieListActionDelegate

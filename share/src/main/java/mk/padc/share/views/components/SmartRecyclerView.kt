@@ -1,4 +1,4 @@
-package mk.padc.themovie.views.compoments
+package mk.padc.share.views.components
 import android.content.Context
 import android.util.AttributeSet
 import android.view.View

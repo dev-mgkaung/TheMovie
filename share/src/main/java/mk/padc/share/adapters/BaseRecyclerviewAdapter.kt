@@ -1,6 +1,6 @@
-package mk.padc.themovie.adapters
+package mk.padc.share.adapters
 import androidx.recyclerview.widget.RecyclerView
-import mk.padc.themovie.views.viewholders.BaseViewHolder
+import mk.padc.share.views.viewholders.BaseViewHolder
 
 abstract class BaseRecyclerAdapter<T : BaseViewHolder<W>,W>
     : RecyclerView.Adapter<T>() {

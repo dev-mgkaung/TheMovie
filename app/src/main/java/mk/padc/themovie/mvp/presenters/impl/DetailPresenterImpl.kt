@@ -6,6 +6,7 @@ import mk.padc.themovie.datas.models.impls.MovieModelmpl
 import mk.padc.themovie.mvp.presenters.DetailPresenter
 import mk.padc.themovie.mvp.views.DetailView
 import androidx.lifecycle.Observer
+import mk.padc.share.mvp.presenters.impl.BaseAppPresenterImpl
 import mk.padc.themovie.datas.models.MovieModel
 
 class DetailPresenterImpl : DetailPresenter, BaseAppPresenterImpl<DetailView>() {

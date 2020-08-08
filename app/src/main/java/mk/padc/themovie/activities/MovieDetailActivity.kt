@@ -3,6 +3,7 @@ package mk.padc.themovie.activities
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -11,6 +12,7 @@ import kotlinx.android.synthetic.main.about_flim.*
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_movie_detail.*
 import kotlinx.android.synthetic.main.detail_action_bar.*
+import mk.padc.share.activities.BaseActivity
 import mk.padc.themovie.R
 import mk.padc.themovie.adapters.ActorAdapter
 import mk.padc.themovie.adapters.CastAdapter

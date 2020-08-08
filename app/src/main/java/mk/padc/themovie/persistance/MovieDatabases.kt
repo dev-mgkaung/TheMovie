@@ -8,7 +8,7 @@ import mk.padc.themovie.datas.vos.*
 import mk.padc.themovie.persistance.daos.MoviesDao
 
 @Database(entities = [PopularMovieVO::class,TopRateMovieVO::class, MovieDetailsVO::class, ActorVO::class ,
-    GenerVO::class,DiscoverVO::class,CastCrewVO::class], version = 7, exportSchema = false)
+    GenerVO::class,DiscoverVO::class,CastCrewVO::class], version = 8, exportSchema = false)
 abstract class MoviesDB : RoomDatabase() {
     companion object {
         val DB_NAME = "THEMOVIES.DB"

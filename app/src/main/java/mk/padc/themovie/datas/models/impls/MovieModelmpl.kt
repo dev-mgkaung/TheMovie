@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import androidx.lifecycle.LiveData
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
+import mk.padc.themovie.BuildConfig
 import mk.padc.themovie.datas.models.BaseModel
 import mk.padc.themovie.datas.models.MovieModel
 import mk.padc.themovie.datas.vos.*
@@ -24,7 +25,7 @@ object MovieModelmpl : MovieModel, BaseModel() {
         onSuccess: () -> Unit,
         onError: (String) -> Unit
     ) {
-        mApi.getPopularMovies(PARAM_API_ACCESS_TOKEN, LANGUAGE, page_id)
+        mApi.getPopularMovies(BuildConfig.BaseApiKey, LANGUAGE, page_id)
             .map { it.results?.toList() ?: listOf() }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -45,7 +46,7 @@ object MovieModelmpl : MovieModel, BaseModel() {
         onSuccess: () -> Unit,
         onError: (String) -> Unit
     ) {
-        mApi.getTopRatedMovies(PARAM_API_ACCESS_TOKEN)
+        mApi.getTopRatedMovies(BuildConfig.BaseApiKey)
             .map { it.results?.toList() ?: listOf() }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -68,7 +69,7 @@ object MovieModelmpl : MovieModel, BaseModel() {
         onSuccess: () -> Unit,
         onError: (String) -> Unit
     ) {
-        mApi.getMovieDetailById(movieId,PARAM_API_ACCESS_TOKEN)
+        mApi.getMovieDetailById(movieId,BuildConfig.BaseApiKey)
             .map { it?.let { it } }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -87,7 +88,7 @@ object MovieModelmpl : MovieModel, BaseModel() {
         onSuccess: () -> Unit,
         onError: (String) -> Unit
     ) {
-        mApi.getActorList(PARAM_API_ACCESS_TOKEN, LANGUAGE, page_id)
+        mApi.getActorList(BuildConfig.BaseApiKey, LANGUAGE, page_id)
             .map { it.results?.toList() ?: listOf() }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -103,7 +104,7 @@ object MovieModelmpl : MovieModel, BaseModel() {
         onSuccess: () -> Unit,
         onError: (String) -> Unit
     ) {
-        mApi.getGenericList(PARAM_API_ACCESS_TOKEN, LANGUAGE)
+        mApi.getGenericList(BuildConfig.BaseApiKey, LANGUAGE)
             .map { it.results?.toList() ?: listOf() }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -119,7 +120,7 @@ object MovieModelmpl : MovieModel, BaseModel() {
         onSuccess: (List<DiscoverVO>) -> Unit,
         onError: (String) -> Unit
     ) {
-        mApi.getDiscoverList(PARAM_API_ACCESS_TOKEN,  genericname)
+        mApi.getDiscoverList(BuildConfig.BaseApiKey,  genericname)
             .map { it.results?.toList() ?: listOf() }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -145,7 +146,7 @@ object MovieModelmpl : MovieModel, BaseModel() {
         onSuccess: () -> Unit,
         onError: (String) -> Unit
     ) {
-        mApi.getMovieDetailByActorsAndCreator(movieId,PARAM_API_ACCESS_TOKEN)
+        mApi.getMovieDetailByActorsAndCreator(movieId,BuildConfig.BaseApiKey)
             .map{it}
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -170,7 +171,7 @@ object MovieModelmpl : MovieModel, BaseModel() {
         onSuccess: (List<VideoVO>) -> Unit,
         onError: (String) -> Unit
     ){
-        mApi.getVideoIdByMovieId(movieId,PARAM_API_ACCESS_TOKEN)
+        mApi.getVideoIdByMovieId(movieId,BuildConfig.BaseApiKey)
             .map { it.results?.toList() ?: listOf() }
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())

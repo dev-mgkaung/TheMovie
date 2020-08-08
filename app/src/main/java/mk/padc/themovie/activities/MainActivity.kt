@@ -1,11 +1,11 @@
 package mk.padc.themovie.activities
 
 import android.os.Bundle
-import android.util.Log
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.tab_layout_viewpager.*
+import mk.padc.share.activities.BaseActivity
 import mk.padc.themovie.R
 import mk.padc.themovie.adapters.*
 import mk.padc.themovie.datas.vos.ActorVO

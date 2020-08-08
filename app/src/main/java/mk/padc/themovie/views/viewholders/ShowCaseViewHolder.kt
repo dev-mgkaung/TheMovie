@@ -5,6 +5,7 @@ import android.view.View
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.show_case_item_layout.view.*
+import mk.padc.share.views.viewholders.BaseViewHolder
 import mk.padc.themovie.R
 import mk.padc.themovie.datas.vos.TopRateMovieVO
 import mk.padc.themovie.delegates.PopularMovieListActionDelegate

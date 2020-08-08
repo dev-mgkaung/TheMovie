@@ -1,6 +1,6 @@
-package mk.padc.themovie.mvp.presenters
+package mk.padc.share.mvp.presenters
 import androidx.lifecycle.ViewModel
-import mk.padc.themovie.mvp.views.BaseView
+import mk.padc.share.mvp.views.BaseView
 
 abstract class AbstractBasePresenter<T : BaseView> : BasePresenter<T>, ViewModel() {
     var mView: T? = null

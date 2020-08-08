@@ -24,3 +24,17 @@ allprojects {
 task clean(type: Delete) {
     delete rootProject.buildDir
 }
+
+def verySensitiveDP = loadSensitiveData()
+
+ext {
+    ApiKeySensitiveData = verySensitiveDP.getProperty('API_KEY_DARA')
+}
+
+def loadSensitiveData(){
+    Properties verySensitiveDataProperties = new Properties()
+    verySensitiveDataProperties.load(project.rootProject.file('secret_data.properties').newDataInputStream())
+    return verySensitiveDataProperties
+}
+
+apply from: 'libraries.gradle'

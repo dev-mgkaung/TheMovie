@@ -1,6 +1,7 @@
 package mk.padc.themovie.datas.models
 
 import android.content.Context
+import mk.padc.themovie.BuildConfig
 import mk.padc.themovie.networks.MovieApi
 import mk.padc.themovie.persistance.MoviesDB
 import mk.padc.themovie.utils.BASE_URL
@@ -24,7 +25,7 @@ abstract class BaseModel  {
             .build()
 
         val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(BuildConfig.BASE_URL_FIELD)
             .addConverterFactory(GsonConverterFactory.create())
             .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
             .client(mOkHttpClient)

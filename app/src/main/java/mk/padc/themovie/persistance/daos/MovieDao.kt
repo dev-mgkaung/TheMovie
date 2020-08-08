@@ -57,6 +57,6 @@ interface MoviesDao {
     fun getAllCastAndCrewList(movie_id: Int): LiveData<CastCrewVO>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun insertCastCrewData(generic: CastCrewVO) :Int
+    fun insertCastCrewData(generic: CastCrewVO)
 
 }

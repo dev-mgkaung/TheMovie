@@ -6,10 +6,12 @@ import android.util.Log
 import android.view.Window
 import android.view.WindowManager
 import androidx.annotation.NonNull
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
 import kotlinx.android.synthetic.main.video_player_view.*
+import mk.padc.share.activities.BaseActivity
 import mk.padc.themovie.R
 import mk.padc.themovie.mvp.presenters.VideoPresenter
 import mk.padc.themovie.mvp.presenters.impl.VideoPresenterImpl

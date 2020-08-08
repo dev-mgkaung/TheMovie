@@ -1,4 +1,4 @@
-package mk.padc.themovie.activities
+package mk.padc.share.activities
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

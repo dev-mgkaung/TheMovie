@@ -2,6 +2,7 @@ package mk.padc.themovie.mvp.presenters.impl
 
 import android.widget.VideoView
 import androidx.lifecycle.LifecycleOwner
+import mk.padc.share.mvp.presenters.impl.BaseAppPresenterImpl
 import mk.padc.themovie.datas.models.MovieModel
 import mk.padc.themovie.datas.models.impls.MovieModelmpl
 import mk.padc.themovie.mvp.presenters.VideoPresenter

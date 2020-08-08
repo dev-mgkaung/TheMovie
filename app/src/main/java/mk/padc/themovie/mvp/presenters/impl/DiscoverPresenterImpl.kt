@@ -2,6 +2,7 @@ package mk.padc.themovie.mvp.presenters.impl
 
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
+import mk.padc.share.mvp.presenters.impl.BaseAppPresenterImpl
 import mk.padc.themovie.datas.models.impls.MovieModelmpl
 import mk.padc.themovie.datas.vos.ActorVO
 import mk.padc.themovie.datas.vos.DiscoverVO

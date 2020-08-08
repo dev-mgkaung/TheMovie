@@ -1,5 +1,6 @@
 package mk.padc.themovie.mvp.views
 
+import mk.padc.share.mvp.views.BaseView
 import mk.padc.themovie.datas.vos.CastCrewVO
 import mk.padc.themovie.datas.vos.CastVO
 import mk.padc.themovie.datas.vos.CrewVO
